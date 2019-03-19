@@ -1,0 +1,19 @@
+function [time, y]=rk4(F,h,t1,t2,y0)
+N=ceil((t2-t1)/h);
+time=zeros(N,1);
+time(1,1)=t1;
+M=length(y0);
+y=zeros(N,M);
+y(1,:)=y0';
+for i=1:N-1
+    t1=time(i);
+    p1=h*F(t1,(y(i,:)'));
+    p2=h*F(t1+h/2,(y(i,:)'+p1/2));
+    p3=h*F(t1+h/2,(y(i,:)'+p2/2));
+    p4=h*F(t1+h,(y(i,:)'+p3));
+    y1=(y(i,:)'+(1/6)*(p1+2*p2+2*p3+p4))';
+    z=y1(1:4);
+    z=z/(norm(z));
+    y(i+1,:)=[z,y1(5:7)];
+    time(i+1)=t1+h;
+end

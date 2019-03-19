@@ -1,4 +1,8 @@
 function tau=torque(t)
+% this function gives the torque in the body frame 
+% it should be noted that the torque is purely a function of time and this
+% torque is in the "to be body frame ideally" i.e. the body frame
+% characterized by the assumed quaternion trajectory 
 global I;  
 w=omega_func_time(t);
 q=quat_func_time(t);

@@ -4,17 +4,17 @@ global I % moment of intertia matrix
 global alpha  % parameter for quaternion trajectory 
 alpha=5.65*1e-3; 
 t1=0; % initial time
-t2=5; % final time 
+t2=5; % final time for the typical integration
 h=0.001; % time step 
-I=eye(3);
-q0=quat_func_time(t1); 
-w0=omega_func_time(t1);
-%% First integration
+I=eye(3);% declaring the moment of inertia
+q0=quat_func_time(t1);  % initial quaternion 
+w0=omega_func_time(t1); % initial omega 
+%% Typical Rk4 integration
 F=@Dynamics;
 [time, state]=rk4(F,h,t1,t2,[q0;w0]);
-%% Second integration
+%% New technique of integration
 G=@Dynamics2;
-h2=0.001/4;
+h2=0.001; %  time step for the New integration
 [time2, state2]=rk42(G,h2,t1,t2,[q0;w0]);
 N=length(time);
 q_true=zeros(N,4);
@@ -28,8 +28,8 @@ for i=1:N
 %     euler_true(i,:)=(180/pi)*quat2eul([q_true(i,4),q_true(i,1:3)],'ZYZ');
 %     euler_state(i,:)=(180/pi)*quat2eul(q,'ZYZ');
 end
-%
 error_in_norm=1-norm_state;
+%% plotting the results
 set(groot,'defaultLineLineWidth',2)
 set(0,'DefaultaxesLineWidth', 2)
 set(0,'DefaultaxesFontSize', 16)

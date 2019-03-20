@@ -4,7 +4,7 @@ global I % moment of intertia matrix
 global ALPHA  % parameter for quaternion trajectory 
 ALPHA=5.65*1e-3; 
 t1=0; % initial time
-t2=5; % final time for the typical integration
+t2=10; % final time for the typical integration
 h=0.001; % time step 
 I=eye(3);% declaring the moment of inertia
 q0=quat_func_time(t1);  % initial quaternion 

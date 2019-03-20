@@ -1,7 +1,7 @@
 function q_d_dot=q_d_dot(t)
 % this function gives q_double dot 
-global alpha;
-q_d_dot=-(1/sqrt(2))*(alpha^2)*[cos(alpha*t)*cos(cos(alpha*t)) + ((sin(alpha*t))^2)*sin(cos(alpha*t));
-                                cos(alpha*t)*sin(cos(alpha*t)) - ((sin(alpha*t))^2)*cos(cos(alpha*t));
-                                -sin(alpha*t)*cos(sin(alpha*t))- ((cos(alpha*t))^2)*sin(sin(alpha*t));
-                                -sin(alpha*t)*sin(sin(alpha*t))+ ((cos(alpha*t))^2)*cos(sin(alpha*t))];
+global ALPHA;
+q_d_dot=-(1/sqrt(2))*(ALPHA^2)*[cos(ALPHA*t)*cos(cos(ALPHA*t)) + ((sin(ALPHA*t))^2)*sin(cos(ALPHA*t));
+                                cos(ALPHA*t)*sin(cos(ALPHA*t)) - ((sin(ALPHA*t))^2)*cos(cos(ALPHA*t));
+                                -sin(ALPHA*t)*cos(sin(ALPHA*t))- ((cos(ALPHA*t))^2)*sin(sin(ALPHA*t));
+                                -sin(ALPHA*t)*sin(sin(ALPHA*t))+ ((cos(ALPHA*t))^2)*cos(sin(ALPHA*t))];

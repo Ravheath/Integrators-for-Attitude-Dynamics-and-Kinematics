@@ -1,8 +1,8 @@
 close all;
 clear all;
 global I % moment of intertia matrix 
-global alpha  % parameter for quaternion trajectory 
-alpha=5.65*1e-3; 
+global ALPHA  % parameter for quaternion trajectory 
+ALPHA=5.65*1e-3; 
 t1=0; % initial time
 t2=5; % final time for the typical integration
 h=0.001; % time step 

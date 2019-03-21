@@ -24,7 +24,7 @@ for i=1:N-1
     % propogating quaternion using exponential map calculated by assuming
     % constant anguar velocity w1  
     q2=[sin(0.5*norm(w1)*h)*w1'/norm(w1);cos(0.5*norm(w1)*h)]; 
-    q2=quat_prod(q2,q1');
+    q2=quat_prod_onenorm(q2,q1');
     % concatenating both of them into a single vector
     y(i+1,:)=[q2',w2];
     time(i+1)=t1+h; % time for the next instant 

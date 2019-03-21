@@ -4,8 +4,8 @@ global I % moment of intertia matrix
 global ALPHA  % parameter for quaternion trajectory 
 ALPHA=5.65*1e-3; 
 t1=0; % initial time
-t2=45; % final time for the typical integration
-h=0.01; % time step 
+t2=10; % final time for the typical integration
+h=0.001; % time step 
 I=eye(3);% declaring the moment of inertia
 q0=quat_func_time(t1);  % initial quaternion 
 w0=omega_func_time(t1); % initial omega 
@@ -14,7 +14,7 @@ F=@Dynamics;
 [time, state]=rk4(F,h,t1,t2,[q0;w0]);
 %% New technique of integration
 G=@Dynamics2;
-h2=0.01; %  time step for the New integration
+h2=0.001; %  time step for the New integration
 [time2, state2]=rk42(G,h2,t1,t2,[q0;w0]);
 N=length(time);
 q_true=zeros(N,4);

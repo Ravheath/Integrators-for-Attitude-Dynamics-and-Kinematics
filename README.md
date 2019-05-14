@@ -1,1 +1,1 @@
-This repository contains codes to analyse different integration methods for Attitude Dynamics and Kinematics of a rigid body. 
+This folder contains main file "main_check.m" which compares the results of integration w.r.t. two frames i.e. orbit and inertial frame.  

@@ -2,18 +2,17 @@ close all;
 clearvars;
 global I % moment of intertia matrix 
 global ALPHA  % parameter for quaternion trajectory 
-ALPHA=5.65*1e-3; 
+ALPHA=6*1e-3; 
 t1=0; % initial time
-t2=15; % final time for the typical integration
-h=0.001; % time step 
+t2=3600; % final time for the typical integration
+h=0.05; % time step 
 I=eye(3);% declaring the moment of inertia
 q0=quat_func_time(t1);  % initial quaternion 
 R0=quat2Rot(q0);
 w0=omega_func_time(t1); % initial omega 
 %% New technique of integration
 G=@Dynamics2;
-h2=0.001; %  time step for the New integration
-[time, state]=rk42(G,h2,t1,t2,[R0,w0]);
+[time, state]=rk4_geom(G,h,t1,t2,[R0,w0]);
 N=length(time);
 R_true=zeros(3*N,3);
 R_err_Geom=zeros(3*N,3);
@@ -118,16 +117,16 @@ set(0,'defaultAxesXGrid','on')
 % xlabel('time in sec');
 % ylabel('q_{error,Geom}(4)');
 %---------------------------------------------------------
-load del_theta_Geom.mat;
-load del_theta_RK4.mat;
+load del_theta_Geom_005.mat;
+load del_theta_rk4_005.mat;
 
 figure(5)
-plot(time,del_theta_RK4);
+plot(time,del_theta_rk4);
 hold on;
 plot(time,del_theta_Geom);
 plot(time,del_theta_Geom_SO3);
 xlabel('time in sec');
 ylabel('angle in radians');
-legend({'$\delta\theta_{RK4}$','$\delta\theta_{Geom}$','$\delta\theta_{Geom,SO(3)}$'},'Interpreter','latex','Location','best');
-title('Roataion angle of the error attitude');
-print(gcf,'angleOfErrQuat.pdf','-dpdf','-bestfit','-r400');
+legend({'$\delta\theta_{RK4}$','$\delta\theta_{Geom,quat}$','$\delta\theta_{Geom,SO(3)}$'},'Interpreter','latex','Location','best');
+title('Roatation angle of the error attitude');
+%print(gcf,'angleOfErrQuat.pdf','-dpdf','-bestfit','-r400');

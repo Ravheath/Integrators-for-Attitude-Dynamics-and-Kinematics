@@ -1,1 +1,0 @@
-This folder contains plots of the simulation done for the case when that quaternion product is used which doesn't normalises the quaternion before giving the output.

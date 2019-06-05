@@ -1,2 +1,0 @@
-This folder contains result of the simulation done when that quaternion product function is used for unit quaternions which normalises the quaternion before giving the output. 
-Essentially whenever the expected product is unit quaternion the function "quat_prod_onennorm" is used. 

@@ -22,11 +22,11 @@ else
     %tau=cross(w,I*w)-I*(R)*(cross(wd,delw))-kp*q(1:3)-kv*delw;
     %-------------------------------------
     
-    %delw_dot=I\(tau-cross(w,I*w)-I*(cross((R)*wd,delw))); %correct
+    delw_dot=I\(tau-cross(w,I*w)-I*(cross((R)*wd,delw))); %correct
     
     %------------------------
     %incorrect equation
-     delw_dot=I\(tau-cross(w,I*w)+I*(R)*(cross(wd,delw)));
+    %delw_dot=I\(tau-cross(w,I*w)+I*(R)*(cross(wd,delw)));
     %-----------------------------
 end 
 xdot=[q_dot; delw_dot]; % concatenating both the derivatives 
